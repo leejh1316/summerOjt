@@ -61,8 +61,10 @@ public class Login extends SQLite{
         do{
             System.out.print("id : ");
             this.inputId = bufferedReader.readLine();
-            char[] password = console.readPassword("password : ");
-            this.inputPassword = new String(password);
+//            char[] password = console.readPassword("password : ");
+//            this.inputPassword = new String(password);
+            System.out.print("password : ");
+            this.inputPassword = bufferedReader.readLine();
             this.match();
         }while(!this.loginState);
     }

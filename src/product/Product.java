@@ -10,12 +10,12 @@ import database.DataMethods;
 
 public class Product implements DataMethods{
     private Statement statement;
-    private Connection connection;
+    // private Connection connection;
     @Override
     public void init(Connection connection, Statement statement) {
         // TODO Auto-generated method stub
         this.statement = statement;
-        this.connection = connection;
+        // this.connection = connection;
     }
 
     @Override
@@ -23,12 +23,12 @@ public class Product implements DataMethods{
         try{
             int index = 1;
             ResultSet resultSet = this.statement.executeQuery("select * from product");
-            System.out.printf("%10s %10s %20s %10s\n","index","product_id","name","stock");
+            System.out.printf("%5s %15s %20s %10s\n","index","product_id","name","stock");
             while(resultSet.next()){
                 String productId = resultSet.getString("product_id");
                 String name = resultSet.getString("name");
                 String stock = resultSet.getString("stock");
-                System.out.format("%10s %10s %20s %10s", index++,productId,name,stock);
+                System.out.format("%5s %15s %20s %10s", index++,productId,name,stock);
                 System.out.println();
             }
             System.out.println("key(1: add, 2: fix, 3: delete, 4: Exit)");
@@ -82,7 +82,7 @@ public class Product implements DataMethods{
             System.out.print("변경 : ");
             String changeProperty = bufferedReader.readLine();
             statement.executeUpdate("Update product set "+changeColumn+"='"+changeProperty+"' where product_id="+productId);
-        }catch(Exception e) {e.printStackTrace(); System.out.println("업데이트 실패");}finally{
+        }catch(Exception e) {System.out.println("업데이트 실패");}finally{
             management();
         }
     }

@@ -14,7 +14,7 @@ public class SQLite {
         try{
             File file = new File("");
             Class.forName("org.sqlite.JDBC");
-            String pathDB = file.getAbsolutePath().replaceAll(("\\\\"), "\\\\\\\\")+"\\database\\\\stock.db";
+            String pathDB = file.getAbsolutePath().replaceAll(("\\\\"), "\\\\\\\\")+"\\\\db\\\\stock.db";
             this.connection = DriverManager.getConnection("jdbc:sqlite:"+pathDB);
         }catch(Exception e){e.printStackTrace();} 
     }
